@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ControlPanel from "./components/ControlPanel/ControlPanel";
+import ProgressBar from "./components/ProgressBar/ProgressBar";
 
 class App extends Component {
   state = {
@@ -17,7 +18,7 @@ class App extends Component {
             {name: "Bread", cost: 15, category: "Food"},
             {name: "Dinner at cafe", cost: 400, category: "Food"}
         ];
-        this.setState({expenses: initList, total: 480});
+        this.setState({expenses: initList, total: 480, category: "Food"});
     };
 
     addExpense = event => {
@@ -68,6 +69,7 @@ class App extends Component {
           </ul>
         </div>
           <p className="Total">Total spent: {this.state.total} KGS</p>
+          <ProgressBar data={this.state.expenses} />
       </div>
     );
   }

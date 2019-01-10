@@ -1,0 +1,17 @@
+.Controls {
+    padding: 15px;
+    box-shadow: 1px 2px 6px 1px rgba(50, 50, 50, 0.75);
+}
+
+.Controls input {
+    padding: 5px 10px;
+    width: 300px;
+}
+
+.Controls .Item-cost {
+    width: 40px;
+    margin: 0 2px 0 20px;
+}
+.Controls select {
+    margin: 0 15px;
+}
