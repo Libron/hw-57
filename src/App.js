@@ -4,17 +4,18 @@ import ControlPanel from "./components/ControlPanel/ControlPanel";
 
 class App extends Component {
   state = {
-    expenses: [],
+      expenses: [],
       name: null,
+      category: null,
       cost: 0,
-    total: 0
+      total: 0
   };
     componentDidMount() {
         const initList = [
-            {name: "Bottle of water", cost: 25},
-            {name: "Milk", cost: 40},
-            {name: "Bread", cost: 15},
-            {name: "Dinner at cafe", cost: 400}
+            {name: "Bottle of water", cost: 25, category: "Food"},
+            {name: "Milk", cost: 40, category: "Food"},
+            {name: "Bread", cost: 15, category: "Food"},
+            {name: "Dinner at cafe", cost: 400, category: "Food"}
         ];
         this.setState({expenses: initList, total: 480});
     };
@@ -23,7 +24,7 @@ class App extends Component {
       event.preventDefault();
       if (this.state.name && this.state.cost) {
           const expenses = this.state.expenses;
-          expenses.push({name: this.state.name, cost: this.state.cost});
+          expenses.push({name: this.state.name, cost: this.state.cost, category: this.state.category});
           let total = this.state.total;
           total += this.state.cost;
 
@@ -42,6 +43,7 @@ class App extends Component {
 
     setExpenseNameHandler = event => this.setState({name: event.target.value});
     setExpenseCostHandler = event => this.setState({cost: parseInt(event.target.value)});
+    setExpenseCategoryHandler = event => this.setState({category: event.target.value});
 
   render() {
     return (
@@ -50,6 +52,7 @@ class App extends Component {
             onSubmit={event => this.addExpense(event)}
             nameExpense={this.setExpenseNameHandler}
             costExpense={this.setExpenseCostHandler}
+            categoryExpense={this.setExpenseCategoryHandler}
         />
         <div className="Expenses">
             <h2>Expenses List:</h2>
@@ -58,7 +61,7 @@ class App extends Component {
                   return (
                       <li key={index}>
                           <p>{item.name}</p>
-                          <span><b>{item.cost} KGS</b><button className="btn-remove" onClick={() => this.removeExpense(index)}> Remove </button></span>
+                          <span><i>{item.category}</i><b>{item.cost} KGS</b><button className="btn-remove" onClick={() => this.removeExpense(index)}> Remove </button></span>
                       </li>
                   );
               })}

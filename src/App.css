@@ -22,7 +22,10 @@
     padding: 0 5px;
 }
 .Expenses ul li b {
-    margin-right: 30px;
+    margin: 0 30px;
+}
+.Expenses ul li i {
+    color: green;
 }
 
 .Expenses ul li span {
