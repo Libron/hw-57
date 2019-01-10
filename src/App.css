@@ -1,5 +1,39 @@
+.App {
+    width: 700px;
+    padding: 15px;
+    margin: 0 auto;
+}
 .Expenses {
-  width: 1200px;
-  margin: 10px auto;
-  border: 1px solid black;
+    margin-top: 50px;
+}
+
+.Expenses ul {
+  margin: 0;
+  padding: 0;
+}
+.Expenses ul li {
+  position: relative;
+  padding: 15px 0 15px 15px;
+  list-style: cjk-ideographic;
+  border-bottom: 1px solid yellow;
+}
+.Expenses ul li p {
+  margin: 0 35% 0 0;
+    padding: 0 5px;
+}
+.Expenses ul li b {
+    margin-right: 30px;
+}
+
+.Expenses ul li span {
+  position: absolute;
+  right: 15px;
+  top: 30%;
+}
+
+.Total {
+    text-align: right;
+    margin: 50px 25px 0 0;
+    font-weight: bold;
+    color: orangered;
 }

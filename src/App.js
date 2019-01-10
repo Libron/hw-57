@@ -9,23 +9,39 @@ class App extends Component {
       cost: 0,
     total: 0
   };
+    componentDidMount() {
+        const initList = [
+            {name: "Bottle of water", cost: 25},
+            {name: "Milk", cost: 40},
+            {name: "Bread", cost: 15},
+            {name: "Dinner at cafe", cost: 400}
+        ];
+        this.setState({expenses: initList, total: 480});
+    };
 
     addExpense = event => {
       event.preventDefault();
       if (this.state.name && this.state.cost) {
           const expenses = this.state.expenses;
           expenses.push({name: this.state.name, cost: this.state.cost});
-          this.setState(expenses);
+          let total = this.state.total;
+          total += this.state.cost;
+
+          this.setState({expenses, total});
       }
     };
 
-    setExpenseNameHandler = event => {
-        this.setState({name: event.target.value});
+    removeExpense = index => {
+        const expenses = this.state.expenses;
+        let total = this.state.total;
+        total -= expenses[index].cost;
+        expenses.splice(index, 1);
+
+        this.setState({expenses, total});
     };
 
-    setExpenseCostHandler = event => {
-        this.setState({cost: parseInt(event.target.value)});
-    };
+    setExpenseNameHandler = event => this.setState({name: event.target.value});
+    setExpenseCostHandler = event => this.setState({cost: parseInt(event.target.value)});
 
   render() {
     return (
@@ -36,19 +52,23 @@ class App extends Component {
             costExpense={this.setExpenseCostHandler}
         />
         <div className="Expenses">
+            <h2>Expenses List:</h2>
           <ul>
               {this.state.expenses.map((item, index) => {
-                  return (<li key={index}>{item.name}</li>);
+                  return (
+                      <li key={index}>
+                          <p>{item.name}</p>
+                          <span><b>{item.cost} KGS</b><button className="btn-remove" onClick={() => this.removeExpense(index)}> Remove </button></span>
+                      </li>
+                  );
               })}
-            <li>Milk</li>
-            <li>Milk</li>
-            <li>Milk</li>
-            <li>Milk</li>
           </ul>
         </div>
+          <p className="Total">Total spent: {this.state.total} KGS</p>
       </div>
     );
   }
 }
 
 export default App;
+
