@@ -8,7 +8,7 @@ const ControlPanel = props => {
             <input type="text" className="Item-cost" onChange={props.costExpense} placeholder="Cost"/>
             <label htmlFor="Item-cost">KGS</label>
             <select name="category" id="category" onChange={props.categoryExpense}>
-                <option selected value="Food">Food</option>
+                <option value="Food">Food</option>
                 <option value="Entertainment">Entertainment</option>
                 <option value="Car">Car</option>
             </select>

@@ -15,10 +15,11 @@ class App extends Component {
         const initList = [
             {name: "Bottle of water", cost: 25, category: "Food"},
             {name: "Milk", cost: 40, category: "Food"},
-            {name: "Bread", cost: 15, category: "Food"},
-            {name: "Dinner at cafe", cost: 400, category: "Food"}
+            {name: "Repair car", cost: 15, category: "Car"},
+            {name: "Go to cinema", cost: 15, category: "Car"},
+            {name: "Dinner at cafe", cost: 400, category: "Entertainment"}
         ];
-        this.setState({expenses: initList, total: 480, category: "Food"});
+        this.setState({expenses: initList, total: 495, category: "Food"});
     };
 
     addExpense = event => {
@@ -69,7 +70,10 @@ class App extends Component {
           </ul>
         </div>
           <p className="Total">Total spent: {this.state.total} KGS</p>
-          <ProgressBar data={this.state.expenses} />
+          <ProgressBar
+              data={this.state.expenses}
+              total={this.state.total}
+          />
       </div>
     );
   }
